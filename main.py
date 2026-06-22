@@ -26,8 +26,13 @@ future=m.make_future_dataframe(periods=1700,freq='D')
 forecast=m.predict(future)
 st.header('Dataset after using FBProphet')
 st.dataframe(forecast)
+st.header('BTC Price Future Forecast Graph (Interactive)')
 fig=m.plot(forecast)
 st.plotly_chart(fig,use_container_width=True)
+
+st.header('BTC Price Seasonality Components')
+fig2=m.plot_components(forecast)
+st.pyplot(fig2,use_container_width=True)
 
 
 
