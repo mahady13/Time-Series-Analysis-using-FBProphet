@@ -19,7 +19,14 @@ st.header("BTC Price Graph")
 st.line_chart(data=df,x='ds',y='y')
 
 
-
+m=Prophet()
+model=m.fit(df)
+future=m.make_future_dataframe(periods=1700,freq='D')
+forecast=m.predict(future)
+st.header('Dataset after using FBProphet')
+st.dataframe(forecast)
+fig=m.plot(forecast)
+st.pyplot(fig)
 
 
 
