@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from prophet import Prophet
 from prophet.plot import plot_plotly,plot_components
+import plotly
 
 df=pd.read_csv("BTC-USD.csv")
 st.title('Time Series Analysis using FBProphet')
@@ -26,7 +27,7 @@ forecast=m.predict(future)
 st.header('Dataset after using FBProphet')
 st.dataframe(forecast)
 fig=m.plot(forecast)
-st.pyplot(fig)
+st.plotly_chart(fig,use_container_width=True)
 
 
 
